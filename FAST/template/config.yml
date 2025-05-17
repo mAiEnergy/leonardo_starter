@@ -1,0 +1,73 @@
+base_model: {BASE_MODEL_PATH}
+model_type: AutoModelForCausalLM
+
+# The following block is used for pretraining
+#pretraining_dataset:
+#  - path: {PRETRAINING_DATASET_PATH}
+#    data_files:
+#            - {DATA_FILE_NAME}
+#    type: pretrain
+#    skip: # number of rows of data to skip over from the beginning
+#max_steps: 1000
+
+# The following block is used for fine-tuning
+datasets:
+  - path: {DATASET_PATH}
+    type: alpaca
+dataset_prepared_path: last_run_prepared
+val_set_size: 0.1
+
+#Uncomment the following line for multi-GPU training (i.e., multiple GPUs per node)
+#deepspeed: $FAST/deepspeed_configs/zero1.json 
+
+tokenizer_type: AutoTokenizer
+
+adapter: lora
+
+sequence_len: 2048
+sample_packing: true
+eval_sample_packing: true
+pad_to_sequence_len: true
+
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+lora_target_modules:
+  - gate_proj
+  - down_proj
+  - up_proj
+  - q_proj
+  - v_proj
+  - k_proj
+  - o_proj
+
+wandb_project:
+wandb_entity:
+wandb_watch:
+wandb_name:
+wandb_log_model:
+
+gradient_accumulation_steps: 2
+micro_batch_size: 2
+num_epochs: 1
+optimizer: adamw_bnb_8bit
+lr_scheduler: cosine
+learning_rate: 0.0002
+
+bf16: auto
+tf32: false
+
+gradient_checkpointing: true
+resume_from_checkpoint:
+logging_steps: 1
+flash_attention: true
+
+loss_watchdog_threshold: 5.0
+loss_watchdog_patience: 3
+
+warmup_steps: 10
+evals_per_epoch: 4
+saves_per_epoch: 1
+weight_decay: 0.0
+special_tokens:
+  pad_token: "<|end_of_text|>"
