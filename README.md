@@ -1,9 +1,10 @@
 # Getting Started
 
-Before going through this getting started guide, make sure to read through the [Leonardo User Guide](https://wiki.u-gov.it/confluence/display/SCAIUS/LEONARDO+User+Guide) . 
+Before going through this getting started guide, make sure to read through the [Leonardo User Guide](https://wiki.u-gov.it/confluence/display/SCAIUS/LEONARDO+User+Guide).
 
->[!info]
->The following setup was made for the **EUHPC_B22_034** account, for **A05_042** (mAiEnergy), the setup just needs to be copied to the respective directories.
+> [!IMPORTANT]
+> The following setup was made for the **EUHPC_B22_034** account, for **A05_042** (mAiEnergy), the setup just needs to be copied to the respective directories.
+
 ## File Structure
 
 We will utilize both the `$FAST` as well as the `$WORK` directory for Training. The cached dependencies (e.g., pip cache, HuggingFace model cache, etc.) will reside in the `$FAST` directory, while all training specific directories will be solely placed in the `$WORK` directory. 
@@ -52,7 +53,7 @@ The `submit.sh` controls the scheduling of the the training on the nodes and GPU
 * Memory per GPU
 * ...
 
->[!info]
+> [!IMPORTANT]
 > Make sure that the necessary base models are already downloaded from HuggingFace and placed in the cache correctly. This is necessary, as the compute nodes can't access outside resources.
 
 After tweaking these parameters, the job can be submitted to the SLURM scheduler by running:
@@ -71,5 +72,6 @@ squeue --me -l
 	* Contains more info regarding Leonardo and the SLURM scheduler
 * [Axolotl](https://docs.axolotl.ai/)
 	* This is the main library used for training/fine-tuning
+	* This might be particularly important: [Dataset Formats](https://docs.axolotl.ai/docs/dataset-formats/)
 * [LLMs-on-supercomputers](https://gitlab.tuwien.ac.at/vsc-public/training/LLMs-on-supercomputers/-/tree/main?ref_type=heads)
 	* Contains examples for training LLMs on Leonardo
