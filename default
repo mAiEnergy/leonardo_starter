@@ -1,0 +1,45 @@
+#%Module5.1
+module use --append /leonardo/prod/spack/03/install/0.19/linux-rhel8-icelake/gcc-8.5.0/environment-modules-5.2.0-rz47odw4phlhzhhbz7b65nv5s5othgmi/modulefiles
+module use --append /leonardo/prod/opt/modulefiles/profiles
+module use --append /leonardo/prod/opt/modulefiles/base/archive
+module use --append /leonardo/prod/opt/modulefiles/base/dependencies
+module use --append /leonardo/prod/opt/modulefiles/base/data
+module use --append /leonardo/prod/opt/modulefiles/base/environment
+module use --append /leonardo/prod/opt/modulefiles/base/libraries
+module use --append /leonardo/prod/opt/modulefiles/base/tools
+module use --append /leonardo/prod/opt/modulefiles/base/compilers
+module use --append /leonardo/prod/opt/modulefiles/base/applications
+module use --append /leonardo/prod/opt/modulefiles/deeplrn/archive
+module use --append /leonardo/prod/opt/modulefiles/deeplrn/dependencies
+module use --append /leonardo/prod/opt/modulefiles/deeplrn/data
+module use --append /leonardo/prod/opt/modulefiles/deeplrn/environment
+module use --append /leonardo/prod/opt/modulefiles/deeplrn/libraries
+module use --append /leonardo/prod/opt/modulefiles/deeplrn/tools
+module use --append /leonardo/prod/opt/modulefiles/deeplrn/compilers
+module use --append /leonardo/prod/opt/modulefiles/deeplrn/applications
+module load profile
+module load cintools
+module load --tag=auto-loaded bzip2/1.0.8-gp5wcz5
+module load --tag=auto-loaded libmd/1.0.4-wja3f5q
+module load --tag=auto-loaded libbsd/0.11.7-cgxjopl
+module load --tag=auto-loaded expat/2.5.0-bptl3xw
+module load --tag=auto-loaded ncurses/6.4-asx3jea
+module load --tag=auto-loaded readline/8.2-nyw6mp6
+module load --tag=auto-loaded gdbm/1.23-fs6otck
+module load --tag=auto-loaded libiconv/1.17-d7yvx2s
+module load --tag=auto-loaded xz/5.4.1-hubmwr5
+module load --tag=auto-loaded zlib-ng/2.1.4-6htiapk
+module load --tag=auto-loaded libxml2/2.10.3-5eeeokp
+module load --tag=auto-loaded pigz/2.7-bopr5vp
+module load --tag=auto-loaded zstd/1.5.5-gawytfl
+module load --tag=auto-loaded tar/1.34-amqus5s
+module load --tag=auto-loaded gettext/0.22.3-2g7elif
+module load --tag=auto-loaded libffi/3.4.4-6r7brdq
+module load --tag=auto-loaded libxcrypt/4.4.35-ss2rzin
+module load --tag=auto-loaded sqlite/3.43.2
+module load --tag=auto-loaded util-linux-uuid/2.38.1-jkdi7kv
+module load python
+module load profile/deeplrn
+module load cuda
+module load gcc
+
