@@ -3,7 +3,7 @@
 Before going through this getting started guide, make sure to read through the [Leonardo User Guide](https://docs.hpc.cineca.it/index.html).
 
 > [!IMPORTANT]
-> The following setup was made for the **EUHPC_B22_034** account, for **A05_042** (mAiEnergy), the setup just needs to be copied to the respective directories.
+> The setup has been replicated for **EUHPC_B22_034** and for **EUHPC_A05_042** (mAiEnergy)
 
 ## File Structure
 
@@ -17,6 +17,7 @@ We will utilize both the `$FAST` as well as the `$WORK` directory for Training. 
 * Make sure the modules were loaded correctly by running:
 	* `python -V` and
 	* `gcc -v`
+
 ## Environment Variables
 
 Make sure that the following env variables are set correctly:
