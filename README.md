@@ -1,6 +1,6 @@
 # Getting Started
 
-Before going through this getting started guide, make sure to read through the [Leonardo User Guide](https://wiki.u-gov.it/confluence/display/SCAIUS/LEONARDO+User+Guide).
+Before going through this getting started guide, make sure to read through the [Leonardo User Guide](https://docs.hpc.cineca.it/index.html).
 
 > [!IMPORTANT]
 > The following setup was made for the **EUHPC_B22_034** account, for **A05_042** (mAiEnergy), the setup just needs to be copied to the respective directories.
@@ -8,6 +8,7 @@ Before going through this getting started guide, make sure to read through the [
 ## File Structure
 
 We will utilize both the `$FAST` as well as the `$WORK` directory for Training. The cached dependencies (e.g., pip cache, HuggingFace model cache, etc.) will reside in the `$FAST` directory, while all training specific directories will be solely placed in the `$WORK` directory. 
+
 ## Installing Dependencies
 
 * Place the `default` modules file in the `$HOME/.module/` directory
@@ -39,7 +40,7 @@ For creating a new experiment, use the `new_experiment` shell script:
 Depending on the needed scenario, certain parameters need to be changed in either the `config.yml` or `submit.sh`.
 
 The `config.yaml` controls all parameters regarding training, for example:
-* Training/Fine-tuning dataset
+* (Continued Pre-)Training or Fine-tuning dataset
 * Learning rate
 * Optimizer
 * Base model
@@ -61,14 +62,24 @@ After tweaking these parameters, the job can be submitted to the SLURM scheduler
 sbatch submit.sh
 ```
 
-The current state of all scheduled jobs (for a particular user) can be viewed by running:
+The current state of all scheduled jobs (for a particular user) can be queried by running:
 ```bash
 squeue --me -l
 ```
 
+## Post-training
+
+After training you will find a directory(usually model-out/) containing the LoRA adapters.
+The next step after training is then to merge these fine-tuned adapters back into the base model.
+
+For that there is a separate submit_merge.sh script.
+
+It will take the `config.yml` file and the LoRA directory to merge the adapters into the base model, the output will then be the final *.safetensors files  in `model-out/merged/`.
+
+
 # More Information
 
-* [Leonardo User Guide](https://wiki.u-gov.it/confluence/display/SCAIUS/LEONARDO+User+Guide)
+* [Leonardo User Guide](https://docs.hpc.cineca.it/index.html)
 	* Contains more info regarding Leonardo and the SLURM scheduler
 * [Axolotl](https://docs.axolotl.ai/)
 	* This is the main library used for training/fine-tuning
